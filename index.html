@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Debugger Created with Belghiria</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/daisyui@1.18.0/dist/full.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/scrollreveal@4.0.9/dist/scrollreveal.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.8.0/gsap.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/pyodide/v0.21.2/full/pyodide.js"></script>
+    <style>
+        body {
+            font-family: 'Montserrat', sans-serif;
+            background-color: #FDF7F4;
+            overflow-x: hidden;
+        }
+        .main-container {
+            padding: 2rem;
+            max-width: 600px;
+            margin: auto;
+            border-radius: 15px;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
+            background: white;
+        }
+        .chat-container {
+            padding: 1rem;
+            border-radius: 10px;
+            border: 1px solid #8EB486;
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+        .code-editor {
+            height: 200px;
+            background: #685752;
+            border-radius: 10px;
+            color: white;
+            padding: 1rem;
+            overflow-y: auto;
+            resize: none;
+            font-family: 'Courier New', Courier, monospace;
+            border: 1px solid #997C70;
+        }
+        .output-area {
+            height: 150px;
+            background: #8EB486;
+            border-radius: 10px;
+            color: #1d1d1d;
+            padding: 1rem;
+            overflow-y: auto;
+            border: 1px solid #685752;
+        }
+        .btn {
+            transition: background-color 0.3s ease;
+        }
+        .btn:hover {
+            background-color: #997C70;
+        }
+        @media (max-width: 640px) {
+            .code-editor, .output-area {
+                height: 150px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="main-container">
+        <h1 class="text-4xl font-bold text-center mb-6 text-gray-800">Debugger Created with Belghiria</h1>
+        <div class="chat-container">
+            <textarea id="codeInput" class="code-editor w-full" placeholder="Write your Python code here..."></textarea>
+            <button id="runCode" class="btn btn-primary w-full mb-6">Run Code</button>
+            <div id="output" class="output-area w-full">Output will be displayed here...</div>
+        </div>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
