@@ -30,6 +30,37 @@ async function executePythonCode(code) {
     }
 }
 
+codeInput.addEventListener('keydown', (event) => {
+    if (event.key === "Enter") {
+        handleIndentation(event);
+    }
+});
+
 codeInput.addEventListener('input', () => {
     outputArea.textContent = '';
 });
+
+function handleIndentation(event) {
+    const start = codeInput.selectionStart;
+    const end = codeInput.selectionEnd;
+    const keywords = ["while", "for", "if", "def", "class"];
+    const lineBeforeCursor = codeInput.value.substring(0, start).split("\n").pop();
+
+    for (const keyword of keywords) {
+        if (lineBeforeCursor.trim().startsWith(keyword) && lineBeforeCursor.trim().endsWith(":")) {
+            event.preventDefault();
+
+            const spaces = "    "; 
+            const newValue =
+                codeInput.value.substring(0, start) +
+                "\n" +
+                spaces +
+                codeInput.value.substring(end);
+
+            codeInput.value = newValue;
+
+            codeInput.selectionStart = codeInput.selectionEnd = start + 1 + spaces.length;
+            break;
+        }
+    }
+}
